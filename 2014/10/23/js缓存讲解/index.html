@@ -1,7 +1,5 @@
 
 
-  
-
 
 
 
@@ -18,9 +16,16 @@
   
   
   
-    <meta name="description" content="">
+    <meta name="description" content="通过计算斐波那契数列明白缓存在网站开发中的重要性1 、首先测试一下没有使用数据缓存来计算斐波那契数列。var count = 0;
+  function fib(n) {
+      count++;
+      if(n === 0 || n === 1) {
+          return 1;
+      }
+
+      return fib(n - 1) + fib(n - 2)...">
   
-  <title>归档 [ 前端之路 ]</title>
+  <title>js缓存讲解 [ 前端之路 ]</title>
   
   
     <link rel="shortcut icon" href="/favicon.ico">
@@ -39,6 +44,24 @@
 <body>
 <div class="side-navigate hide-area">
   
+    <div class="item prev">
+      <a href="/2015/02/14/js闭包/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        js闭包
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/2014/06/18/this四种指向/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        this四种指向
+      </div>
+    </div>
   
 </div>
 <div id="outer-container" class="hide-area">
@@ -64,7 +87,7 @@
           </li>
         
           
-            <li class="active">
+            <li>
           
             <a href="/archives">Archives</a>
             
@@ -110,204 +133,103 @@
     <div id="content-inner">
       
       
-  <article>
+  <article id="post">
+    <h1>js缓存讲解</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">撰写于 2014-10-23</span>
+      
+        <span id = "post-title-updated">修改于 2016-10-23</span>
+      
+      
+      
+    </p>
     
+    <h1 id="通过计算斐波那契数列明白缓存在网站开发中的重要性"><a href="#通过计算斐波那契数列明白缓存在网站开发中的重要性" class="headerlink" title="通过计算斐波那契数列明白缓存在网站开发中的重要性"></a>通过计算斐波那契数列明白缓存在网站开发中的重要性</h1><h3 id="1-、首先测试一下没有使用数据缓存来计算斐波那契数列。"><a href="#1-、首先测试一下没有使用数据缓存来计算斐波那契数列。" class="headerlink" title="1 、首先测试一下没有使用数据缓存来计算斐波那契数列。"></a>1 、首先测试一下没有使用数据缓存来计算斐波那契数列。</h3><pre><code>var count = 0;
+  function fib(n) {
+      count++;
+      if(n === 0 || n === 1) {
+          return 1;
+      }
 
-  <div id="recent-posts">
-    <h1>归档
-    
-      <span class="posts-count">
-      共
-      5
-      
-        文章
-      
-      </span>
-    
-    </h1>
-    
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-        
-      
-      
-    
-    
-    
-      
-      
-        
-        <h3 class="archive-year-title">2015
-        
-          <span class="posts-count">
-          共
-          1
-          
-            文章
-          
-          </span>
-        
-        </h3>
-      
-      <div class="post-title-item">
-  
-  <a href="/2015/02/14/js闭包/">
-  
-    js闭包
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">2-14</span>
-    
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-      
-      
-        
-        <h3 class="archive-year-title">2014
-        
-          <span class="posts-count">
-          共
-          3
-          
-            文章
-          
-          </span>
-        
-        </h3>
-      
-      <div class="post-title-item">
-  
-  <a href="/2014/10/23/js缓存讲解/">
-  
-    js缓存讲解
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">10-23</span>
-    
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-      
-      
-      <div class="post-title-item">
-  
-  <a href="/2014/06/18/this四种指向/">
-  
-    this四种指向
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">6-18</span>
-    
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-      
-      
-      <div class="post-title-item">
-  
-  <a href="/2014/02/11/js数组的总结/">
-  
-    js数组的总结
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">2-11</span>
-    
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-      
-      
-        
-        <h3 class="archive-year-title">2013
-        
-          <span class="posts-count">
-          共
-          1
-          
-            文章
-          
-          </span>
-        
-        </h3>
-      
-      <div class="post-title-item">
-  
-  <a href="/2013/05/20/javascript中事件总结/">
-  
-    javascript中事件总结
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">5-20</span>
-    
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-  </div>
+      return fib(n - 1) + fib(n - 2);
+  }
+   fib(40);
+  console.log(count);//count是函数fib运算次数，
+  当fib(40)时候运行次数高达：331160281次，感兴趣的可以检测一下。
+</code></pre><h3 id="2、下面我们看看使用数据缓存来计算斐波那契数列。"><a href="#2、下面我们看看使用数据缓存来计算斐波那契数列。" class="headerlink" title="2、下面我们看看使用数据缓存来计算斐波那契数列。"></a>2、下面我们看看使用数据缓存来计算斐波那契数列。</h3><pre><code>// 缓存是怎么使用的？
+  // 一般的缓存结构就是：键值对（对象 或者 数组）
+  // var obj = {};
+  // var arr = [];
+  // 使用缓存的方式：
+  // 1 先去缓存中查找有没有键对应的数据
+  // 2 如果有，就直接拿过来使用
+  // 3 如果没有，就计算或者是查询到，然后，要放到缓存中！
+  // 4 以后，就通过缓存来去数据
+  // 简化的步骤：先去缓存中查询有没有，如果没有就计算，并将结果放到缓存中
+  // 问题：缓存放到什么位置去？？
+  // 如果是全局变量，此时，任何人都能修改全局变量的内容
+  // 那就造成：数据不准确
+  // var obj = {};
+  // 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89....
+  var count = 0;
+  var fib = (function() {
+      // 使用闭包，将缓存放到闭包中去，
+      // 此时，就对这个缓存起到了保护的作用
+      // var cache = {};
+      var cache = [];
 
+      // 这个函数使用来计算：斐波那契数列
+      return function(n) {
+          count++;
+          // 1 先去缓存中查找有没有该键对象的值
+          if(cache[n] !== undefined) {
+              // 2 如果有，就直接返回当前的值
+              return cache[n];
+          }
+
+          // 3 如果没有，就计算，然后要添加到缓存中去
+          if(n === 0 || n === 1) {
+              // return 1;
+              cache[n] = 1;
+              return cache[n];
+          }
+          var temp = arguments.callee(n - 1) + arguments.callee(n - 2);
+          // 放到缓存中去
+          cache[n] = temp;
+          return cache[n];
+      };
+  })();
+  fib(40);
+  console.log(count);// 计算次数为：79次。
+</code></pre><p>通过上面两次对比，瞬间觉得数据缓存的重要性，由331160281次下降到79次。<br>感兴趣的屌丝可以测试一下fib（50）；的运行次数，不使用数据缓存我测试了，<br>我的浏览器崩溃了，使用数据缓存运行才99次。</p>
 
   </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
+  <div class="random-toc">
+    <h2>目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#通过计算斐波那契数列明白缓存在网站开发中的重要性"><span class="toc-text">通过计算斐波那契数列明白缓存在网站开发中的重要性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-、首先测试一下没有使用数据缓存来计算斐波那契数列。"><span class="toc-text">1 、首先测试一下没有使用数据缓存来计算斐波那契数列。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、下面我们看看使用数据缓存来计算斐波那契数列。"><span class="toc-text">2、下面我们看看使用数据缓存来计算斐波那契数列。</span></a></li></ol></li></ol></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2015/02/14/js闭包/" class="prev">&larr; 上一篇 js闭包</a>
+  
+
+  
+
+  
+    <a href="/2014/06/18/this四种指向/" class="next">下一篇 this四种指向 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
 
       
       
@@ -443,6 +365,8 @@ var unsplashConfig = {"gravity":"north"};
 var turnoffBackgroundImage = false;
 
 
+
+  turnoffBackgroundImage = true;
 
 
 var backgroundColor = "34495E";

@@ -1,0 +1,400 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="lishuangyi">
+  
+  
+  
+  
+    <meta name="description" content="javascript中函数的四种调用模式详解介绍函数四种调用模式前，我们先来了解一下函数和方法的概念，其实函数和方法本质是一样，就是称呼不一样而已。函数：如果一个函数与任何对象关系，就称该函数为函数。方法：如果一个函数作为一个对象属性存在，我们就称之为方法。接下来就可以开始今天的主体。1、函数调用模式。就是通过函数来调用，规范写法为：function fn(){} fn(); 函数中this...">
+  
+  <title>this四种指向 [ 前端之路 ]</title>
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/2014/10/23/js缓存讲解/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        js缓存讲解
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/2014/02/11/js数组的总结/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        js数组的总结
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg"/>
+          <div id="homelink">前端之路</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/stiekel/hexo-theme-random">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>this四种指向</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">撰写于 2014-06-18</span>
+      
+        <span id = "post-title-updated">修改于 2016-10-23</span>
+      
+      
+      
+    </p>
+    
+    <h1 id="javascript中函数的四种调用模式详解"><a href="#javascript中函数的四种调用模式详解" class="headerlink" title="javascript中函数的四种调用模式详解"></a>javascript中函数的四种调用模式详解</h1><h2 id="介绍函数四种调用模式前，我们先来了解一下函数和方法的概念，其实函数和方法本质是一样，就是称呼不一样而已。函数：如果一个函数与任何对象关系，就称该函数为函数。方法：如果一个函数作为一个对象属性存在，我们就称之为方法。接下来就可以开始今天的主体。"><a href="#介绍函数四种调用模式前，我们先来了解一下函数和方法的概念，其实函数和方法本质是一样，就是称呼不一样而已。函数：如果一个函数与任何对象关系，就称该函数为函数。方法：如果一个函数作为一个对象属性存在，我们就称之为方法。接下来就可以开始今天的主体。" class="headerlink" title="介绍函数四种调用模式前，我们先来了解一下函数和方法的概念，其实函数和方法本质是一样，就是称呼不一样而已。函数：如果一个函数与任何对象关系，就称该函数为函数。方法：如果一个函数作为一个对象属性存在，我们就称之为方法。接下来就可以开始今天的主体。"></a>介绍函数四种调用模式前，我们先来了解一下函数和方法的概念，其实函数和方法本质是一样，就是称呼不一样而已。函数：如果一个函数与任何对象关系，就称该函数为函数。方法：如果一个函数作为一个对象属性存在，我们就称之为方法。接下来就可以开始今天的主体。</h2><h2 id="1、函数调用模式。"><a href="#1、函数调用模式。" class="headerlink" title="1、函数调用模式。"></a>1、函数调用模式。</h2><h3 id="就是通过函数来调用，规范写法为：function-fn-fn-函数中this的指向-gt-window。案例如下："><a href="#就是通过函数来调用，规范写法为：function-fn-fn-函数中this的指向-gt-window。案例如下：" class="headerlink" title="就是通过函数来调用，规范写法为：function fn(){} fn(); 函数中this的指向-&gt;window。案例如下："></a>就是通过函数来调用，规范写法为：function fn(){} fn(); 函数中this的指向-&gt;window。案例如下：</h3><pre><code> var age = 38;
+var obj = {
+    age: 18,
+    getAge: function() {
+
+        function foo() {
+            console.log(this.age); // 因为是函数调用模式，所以this指向window全局变量，所以输出为38
+        }
+        // 只看这个函数是怎么调用，不管函数是在哪声明的！
+        foo();
+    }
+};
+
+obj.getAge();
+</code></pre><h2 id="2、方法调用模式。"><a href="#2、方法调用模式。" class="headerlink" title="2、方法调用模式。"></a>2、方法调用模式。</h2><h3 id="就是通过对象的属性来调用，规范写法为："><a href="#就是通过对象的属性来调用，规范写法为：" class="headerlink" title="就是通过对象的属性来调用，规范写法为："></a>就是通过对象的属性来调用，规范写法为：</h3><pre><code>var obj = {
+    say: function() {
+        console.log(this);
+    }
+};
+obj.say();
+</code></pre><h3 id="函数中this的指向-gt-当前对象。案例如下："><a href="#函数中this的指向-gt-当前对象。案例如下：" class="headerlink" title="函数中this的指向-&gt;当前对象。案例如下："></a>函数中this的指向-&gt;当前对象。案例如下：</h3><pre><code>var age = 38;
+  var obj = {
+      age: 18,
+      getAge: function() {
+          console.log(this.age);// 18
+      }
+  };
+
+  obj.getAge();//因为是方法调用模式，this指向当前的对象obj。
+</code></pre><h2 id="3、构造函数模式"><a href="#3、构造函数模式" class="headerlink" title="3、构造函数模式"></a>3、构造函数模式</h2><h3 id="如果是作为构造函数来调用，那么this就是指向：new创建的新对象！规范写法为："><a href="#如果是作为构造函数来调用，那么this就是指向：new创建的新对象！规范写法为：" class="headerlink" title="如果是作为构造函数来调用，那么this就是指向：new创建的新对象！规范写法为："></a>如果是作为构造函数来调用，那么this就是指向：new创建的新对象！规范写法为：</h3><pre><code>function foo() {
+       this.name = &quot;123&quot;;
+   }
+   var f0 = new foo();
+
+ 没有找到合适的案例，为大家见谅！！！
+</code></pre><h2 id="4、函数上下文（借用方法模式）。"><a href="#4、函数上下文（借用方法模式）。" class="headerlink" title="4、函数上下文（借用方法模式）。"></a>4、函数上下文（借用方法模式）。</h2><h3 id="上下文模式中this的指向和前三种模式不一样，它的this指向可以改变，而前三种模式是固定。函数上下文在我理解就是函数作用域。基本语法：apply和call-后面都是跟两个参数"><a href="#上下文模式中this的指向和前三种模式不一样，它的this指向可以改变，而前三种模式是固定。函数上下文在我理解就是函数作用域。基本语法：apply和call-后面都是跟两个参数" class="headerlink" title="上下文模式中this的指向和前三种模式不一样，它的this指向可以改变，而前三种模式是固定。函数上下文在我理解就是函数作用域。基本语法：apply和call   后面都是跟两个参数"></a>上下文模式中this的指向和前三种模式不一样，它的this指向可以改变，而前三种模式是固定。函数上下文在我理解就是函数作用域。基本语法：apply和call   后面都是跟两个参数</h3><h3 id="apply和call第一个参数一样：表示使用那个对象来调用函数；apply第二个参数是：是一个数组或伪数组，数组的值做为函数的参数被传入；call第二个参数是：是基本数据类型（number-string-boolean-案例如下："><a href="#apply和call第一个参数一样：表示使用那个对象来调用函数；apply第二个参数是：是一个数组或伪数组，数组的值做为函数的参数被传入；call第二个参数是：是基本数据类型（number-string-boolean-案例如下：" class="headerlink" title="apply和call第一个参数一样：表示使用那个对象来调用函数；apply第二个参数是：是一个数组或伪数组，数组的值做为函数的参数被传入；call第二个参数是：是基本数据类型（number string boolean);案例如下："></a>apply和call第一个参数一样：表示使用那个对象来调用函数；apply第二个参数是：是一个数组或伪数组，数组的值做为函数的参数被传入；call第二个参数是：是基本数据类型（number string boolean);案例如下：</h3><pre><code>//1：求一个数组中的最大值
+方法一：常规写法
+  var arr = [9, 1, 4, 101, 7, 22, 8];
+  var maxNum = arr[0],
+      i = 1, len = arr.length;
+
+  for(; i &lt; len; i++) {
+      if(arr[i] &gt; maxNum) {
+          maxNum = arr[i];
+      }
+  }
+  console.log(maxNum);
+
+方法二：使用上下文调用模式（apply);
+  var arr = [9, 1, 4, 101, 7, 22, 8];
+ var maxNum=Math.max.apply(window,arr);//Math.max是window中的排序方法我们可以通过apply借用window中Math.max方法来对数组进行排序。
+  console.log(maxNum);
+</code></pre>
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
+  <div class="random-toc">
+    <h2>目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript中函数的四种调用模式详解"><span class="toc-text">javascript中函数的四种调用模式详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍函数四种调用模式前，我们先来了解一下函数和方法的概念，其实函数和方法本质是一样，就是称呼不一样而已。函数：如果一个函数与任何对象关系，就称该函数为函数。方法：如果一个函数作为一个对象属性存在，我们就称之为方法。接下来就可以开始今天的主体。"><span class="toc-text">介绍函数四种调用模式前，我们先来了解一下函数和方法的概念，其实函数和方法本质是一样，就是称呼不一样而已。函数：如果一个函数与任何对象关系，就称该函数为函数。方法：如果一个函数作为一个对象属性存在，我们就称之为方法。接下来就可以开始今天的主体。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、函数调用模式。"><span class="toc-text">1、函数调用模式。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#就是通过函数来调用，规范写法为：function-fn-fn-函数中this的指向-gt-window。案例如下："><span class="toc-text">就是通过函数来调用，规范写法为：function fn(){} fn(); 函数中this的指向->window。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、方法调用模式。"><span class="toc-text">2、方法调用模式。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#就是通过对象的属性来调用，规范写法为："><span class="toc-text">就是通过对象的属性来调用，规范写法为：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数中this的指向-gt-当前对象。案例如下："><span class="toc-text">函数中this的指向->当前对象。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、构造函数模式"><span class="toc-text">3、构造函数模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如果是作为构造函数来调用，那么this就是指向：new创建的新对象！规范写法为："><span class="toc-text">如果是作为构造函数来调用，那么this就是指向：new创建的新对象！规范写法为：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、函数上下文（借用方法模式）。"><span class="toc-text">4、函数上下文（借用方法模式）。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#上下文模式中this的指向和前三种模式不一样，它的this指向可以改变，而前三种模式是固定。函数上下文在我理解就是函数作用域。基本语法：apply和call-后面都是跟两个参数"><span class="toc-text">上下文模式中this的指向和前三种模式不一样，它的this指向可以改变，而前三种模式是固定。函数上下文在我理解就是函数作用域。基本语法：apply和call   后面都是跟两个参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#apply和call第一个参数一样：表示使用那个对象来调用函数；apply第二个参数是：是一个数组或伪数组，数组的值做为函数的参数被传入；call第二个参数是：是基本数据类型（number-string-boolean-案例如下："><span class="toc-text">apply和call第一个参数一样：表示使用那个对象来调用函数；apply第二个参数是：是一个数组或伪数组，数组的值做为函数的参数被传入；call第二个参数是：是基本数据类型（number string boolean);案例如下：</span></a></li></ol></li></ol></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2014/10/23/js缓存讲解/" class="prev">&larr; 上一篇 js缓存讲解</a>
+  
+
+  
+
+  
+    <a href="/2014/02/11/js数组的总结/" class="next">下一篇 js数组的总结 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by lishuangyi using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/stiekel/hexo-theme-random">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://coding.net/u/Stiekel">
+        
+          <i class="icon iconfont coding">&#xe607;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://twitter.com/SidCN">
+        
+          <i class="icon iconfont twitter">&#xe600;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/sidcn">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://www.douban.com/people/Stiekel/">
+        
+          <i class="icon iconfont douban">&#xe60f;</i>
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":5000,"shuffle":true,"count":28};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+

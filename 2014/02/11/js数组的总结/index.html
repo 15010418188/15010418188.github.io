@@ -1,0 +1,383 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="lishuangyi">
+  
+  
+  
+  
+    <meta name="description" content="javascript中数组常用方法总结1、join（）方法：Array.join()方法将数组中所以元素都转化为字符串链接在一起，返回最后生成的字符串。也可以指定可选的字符串在生成的字符串中来分隔数组的各个元素。如果不指定分隔符，默认使用逗号。案例如下：var  a=[1,2,3];
+ a.join();//=&gt; &quot;1,2,3&quot; 因为没有指定分隔符，默认为逗号。
+ ...">
+  
+  <title>js数组的总结 [ 前端之路 ]</title>
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/2014/06/18/this四种指向/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        this四种指向
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/2013/05/20/javascript中事件总结/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        javascript中事件总结
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg"/>
+          <div id="homelink">前端之路</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/stiekel/hexo-theme-random">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>js数组的总结</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">撰写于 2014-02-11</span>
+      
+        <span id = "post-title-updated">修改于 2016-10-23</span>
+      
+      
+      
+    </p>
+    
+    <h1 id="javascript中数组常用方法总结"><a href="#javascript中数组常用方法总结" class="headerlink" title="javascript中数组常用方法总结"></a>javascript中数组常用方法总结</h1><h2 id="1、join（）方法："><a href="#1、join（）方法：" class="headerlink" title="1、join（）方法："></a>1、join（）方法：</h2><h3 id="Array-join-方法将数组中所以元素都转化为字符串链接在一起，返回最后生成的字符串。也可以指定可选的字符串在生成的字符串中来分隔数组的各个元素。如果不指定分隔符，默认使用逗号。案例如下："><a href="#Array-join-方法将数组中所以元素都转化为字符串链接在一起，返回最后生成的字符串。也可以指定可选的字符串在生成的字符串中来分隔数组的各个元素。如果不指定分隔符，默认使用逗号。案例如下：" class="headerlink" title="Array.join()方法将数组中所以元素都转化为字符串链接在一起，返回最后生成的字符串。也可以指定可选的字符串在生成的字符串中来分隔数组的各个元素。如果不指定分隔符，默认使用逗号。案例如下："></a>Array.join()方法将数组中所以元素都转化为字符串链接在一起，返回最后生成的字符串。也可以指定可选的字符串在生成的字符串中来分隔数组的各个元素。如果不指定分隔符，默认使用逗号。案例如下：</h3><pre><code>var  a=[1,2,3];
+ a.join();//=&gt; &quot;1,2,3&quot; 因为没有指定分隔符，默认为逗号。
+ a.join(&quot;+&quot;);//=&gt; &quot;1+2+3&quot; 指定分隔符为+
+ a.join(&quot;-&quot;);//=&gt; &quot;1-2-3&quot; 指定分隔符为-
+
+ Array.join()方法是String.split()方法的逆操作，后者是将字符串分割成若干块创建一个数组。
+</code></pre><h2 id="2、-reverse-方法："><a href="#2、-reverse-方法：" class="headerlink" title="2、   reverse()方法："></a>2、   reverse()方法：</h2><h3 id="Array-reverse-方法将数组中元素进行倒叙，返回倒叙的数组，它是在原来数组中进行倒叙，不产生的新数组，返回就是原来的数组，只不过里面元素已经进行倒叙重排了。案例如下："><a href="#Array-reverse-方法将数组中元素进行倒叙，返回倒叙的数组，它是在原来数组中进行倒叙，不产生的新数组，返回就是原来的数组，只不过里面元素已经进行倒叙重排了。案例如下：" class="headerlink" title="Array.reverse()方法将数组中元素进行倒叙，返回倒叙的数组，它是在原来数组中进行倒叙，不产生的新数组，返回就是原来的数组，只不过里面元素已经进行倒叙重排了。案例如下："></a>Array.reverse()方法将数组中元素进行倒叙，返回倒叙的数组，它是在原来数组中进行倒叙，不产生的新数组，返回就是原来的数组，只不过里面元素已经进行倒叙重排了。案例如下：</h3><pre><code>var  a=[1,2,3];
+a.reverse();// =&gt;a=[3,2,1];
+</code></pre><h2 id="3、sort-方法："><a href="#3、sort-方法：" class="headerlink" title="3、sort()方法："></a>3、sort()方法：</h2><h3 id="Array-sort-方法将数组中的元素排序，并返回排序好的数组。如果不传参数默认以字母表顺序进行排序。案例如下："><a href="#Array-sort-方法将数组中的元素排序，并返回排序好的数组。如果不传参数默认以字母表顺序进行排序。案例如下：" class="headerlink" title="Array.sort()方法将数组中的元素排序，并返回排序好的数组。如果不传参数默认以字母表顺序进行排序。案例如下："></a>Array.sort()方法将数组中的元素排序，并返回排序好的数组。如果不传参数默认以字母表顺序进行排序。案例如下：</h3><pre><code>var a=[4,3,1,2]
+a.sort();// =&gt;[1,2,3,4]
+a.sort(function(a,b){return a-b;});//=&gt;[1,2,3,4] 降序排列
+a.sort(function(a,b){return b-a;});//=&gt;[4,3,2,1] 升序排列
+ 这里使用匿名函数很方便，因为函数只使用一次就没有必要给函数命名了。
+</code></pre><h2 id="4、concat"><a href="#4、concat" class="headerlink" title="4、concat():"></a>4、concat():</h2><h3 id="Array-concat-方法创建并返回一个新数组，新数组中的元素包含调用数组的元素和concat-中传入参数的值，传入的参数可以是单独数值，也可以是数组-concat-不会递归扁平化数组的数组。案例如下："><a href="#Array-concat-方法创建并返回一个新数组，新数组中的元素包含调用数组的元素和concat-中传入参数的值，传入的参数可以是单独数值，也可以是数组-concat-不会递归扁平化数组的数组。案例如下：" class="headerlink" title="Array.concat()方法创建并返回一个新数组，新数组中的元素包含调用数组的元素和concat()中传入参数的值，传入的参数可以是单独数值，也可以是数组,concat()不会递归扁平化数组的数组。案例如下："></a>Array.concat()方法创建并返回一个新数组，新数组中的元素包含调用数组的元素和concat()中传入参数的值，传入的参数可以是单独数值，也可以是数组,concat()不会递归扁平化数组的数组。案例如下：</h3><pre><code>var a=[5,6,7];
+a.concat(1,2);// =&gt;[5,6,7,1,2];
+a.concat([1,2]);// =&gt;[5,6,7,1,2];
+a.concat(3,[1,2]);// =&gt;[5,6,7,3,1,2];
+a.concat([1,[2,3]]);// =&gt;[5,6,7,1,[2,3]];
+</code></pre><h2 id="5、slice（）方法："><a href="#5、slice（）方法：" class="headerlink" title="5、slice（）方法："></a>5、slice（）方法：</h2><h3 id="Array-slice-方法返回指定数组的一个片段或子数组。里面可以传一个参数或两个参数，参数可以为正也可以为负。案例如下："><a href="#Array-slice-方法返回指定数组的一个片段或子数组。里面可以传一个参数或两个参数，参数可以为正也可以为负。案例如下：" class="headerlink" title="Array.slice()方法返回指定数组的一个片段或子数组。里面可以传一个参数或两个参数，参数可以为正也可以为负。案例如下："></a>Array.slice()方法返回指定数组的一个片段或子数组。里面可以传一个参数或两个参数，参数可以为正也可以为负。案例如下：</h3><pre><code>var a=[5,6,7,3,1,2];
+ a.slice(1)// =&gt;[6,7,3,1,2]  数字参数指的是数组的索引，一个参数表示开始的位置，不传第二个参数默认为数组中元素个数。
+  a.slice(1,3)// =&gt;[6,7]  第二参数是数组索引结束位置，(不包含) index&gt;=1&amp;&amp;index&lt;3;
+ a.slice(1,-3)// =&gt;[6,7]  当参数中有负数时候，可以进行转换正数，方法就是-3+6(数组里元素个数）
+  a.slice(-3,-2)// =&gt;[3] 同理如上。
+</code></pre><h2 id="6、splice（）方法："><a href="#6、splice（）方法：" class="headerlink" title="6、splice（）方法："></a>6、splice（）方法：</h2><h3 id="Array-splice-方法是在数组中插入或删除的通用方法。它会修改调用的数组，splice-可以传入三个参数，第一参数表示删除元素索引开始的地方，第二参数表示删除元素总数，第三参数，表示插入的元素，元素插入的位置就是删除元素开始的位置。案例如下："><a href="#Array-splice-方法是在数组中插入或删除的通用方法。它会修改调用的数组，splice-可以传入三个参数，第一参数表示删除元素索引开始的地方，第二参数表示删除元素总数，第三参数，表示插入的元素，元素插入的位置就是删除元素开始的位置。案例如下：" class="headerlink" title="Array.splice()方法是在数组中插入或删除的通用方法。它会修改调用的数组，splice()可以传入三个参数，第一参数表示删除元素索引开始的地方，第二参数表示删除元素总数，第三参数，表示插入的元素，元素插入的位置就是删除元素开始的位置。案例如下："></a>Array.splice()方法是在数组中插入或删除的通用方法。它会修改调用的数组，splice()可以传入三个参数，第一参数表示删除元素索引开始的地方，第二参数表示删除元素总数，第三参数，表示插入的元素，元素插入的位置就是删除元素开始的位置。案例如下：</h3><pre><code>var a=[5,6,7,3,1,2];
+a.splice(2);// =&gt;[7,3,1,2]  a=[5,6];//传入一个参数表示从索引开始删除之后所有的元素。
+a.splice(2,2);// =&gt;[7,3]     a=[5,6,1,2];第二个参数表示删除元素的个数。
+a.splice(2,2，&apos;a&apos;,&apos;b&apos;,&apos;c&apos;); //=&gt;[7,3]  a=[5,6,&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,1,2];
+</code></pre><h2 id="7、push（）和-unshift-方法："><a href="#7、push（）和-unshift-方法：" class="headerlink" title="7、push（）和 unshift()方法："></a>7、push（）和 unshift()方法：</h2><h3 id="Array-push-方法就是向数组最后面添加元素，它返回的是新数组的长度；Array-unshift-方法就是向数组最前面添加元素，返回的是新数组的长度。案例如下："><a href="#Array-push-方法就是向数组最后面添加元素，它返回的是新数组的长度；Array-unshift-方法就是向数组最前面添加元素，返回的是新数组的长度。案例如下：" class="headerlink" title="Array.push()方法就是向数组最后面添加元素，它返回的是新数组的长度；Array.unshift()方法就是向数组最前面添加元素，返回的是新数组的长度。案例如下："></a>Array.push()方法就是向数组最后面添加元素，它返回的是新数组的长度；Array.unshift()方法就是向数组最前面添加元素，返回的是新数组的长度。案例如下：</h3><pre><code>var  a=[1,2,3];
+ a.push(4,5);// a=[1,2,3,4,5]; 返回 值为5；
+ a.unshift(4,5);// a=[4,5,1,2,3]; 返回 值为5；☆传的参数可以一个，也可以多个。
+</code></pre><h2 id="8、pop（）和-shift-方法："><a href="#8、pop（）和-shift-方法：" class="headerlink" title="8、pop（）和 shift()方法："></a>8、pop（）和 shift()方法：</h2><h3 id="Array-pop-方法就是删除数组中最后一个元素，它返回是删除的元素；Array-shift-方法是删除数组最前面的元素，返回是删除的元素。"><a href="#Array-pop-方法就是删除数组中最后一个元素，它返回是删除的元素；Array-shift-方法是删除数组最前面的元素，返回是删除的元素。" class="headerlink" title="Array.pop()方法就是删除数组中最后一个元素，它返回是删除的元素；Array.shift()方法是删除数组最前面的元素，返回是删除的元素。"></a>Array.pop()方法就是删除数组中最后一个元素，它返回是删除的元素；Array.shift()方法是删除数组最前面的元素，返回是删除的元素。</h3><pre><code>var a=[5,6,7];
+a.pop();// a=[5,6]; 返回值为 7
+a.shift();// a=[6,7];  返回值 5
+</code></pre>
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
+  <div class="random-toc">
+    <h2>目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript中数组常用方法总结"><span class="toc-text">javascript中数组常用方法总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、join（）方法："><span class="toc-text">1、join（）方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-join-方法将数组中所以元素都转化为字符串链接在一起，返回最后生成的字符串。也可以指定可选的字符串在生成的字符串中来分隔数组的各个元素。如果不指定分隔符，默认使用逗号。案例如下："><span class="toc-text">Array.join()方法将数组中所以元素都转化为字符串链接在一起，返回最后生成的字符串。也可以指定可选的字符串在生成的字符串中来分隔数组的各个元素。如果不指定分隔符，默认使用逗号。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、-reverse-方法："><span class="toc-text">2、   reverse()方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-reverse-方法将数组中元素进行倒叙，返回倒叙的数组，它是在原来数组中进行倒叙，不产生的新数组，返回就是原来的数组，只不过里面元素已经进行倒叙重排了。案例如下："><span class="toc-text">Array.reverse()方法将数组中元素进行倒叙，返回倒叙的数组，它是在原来数组中进行倒叙，不产生的新数组，返回就是原来的数组，只不过里面元素已经进行倒叙重排了。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、sort-方法："><span class="toc-text">3、sort()方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-sort-方法将数组中的元素排序，并返回排序好的数组。如果不传参数默认以字母表顺序进行排序。案例如下："><span class="toc-text">Array.sort()方法将数组中的元素排序，并返回排序好的数组。如果不传参数默认以字母表顺序进行排序。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、concat"><span class="toc-text">4、concat():</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-concat-方法创建并返回一个新数组，新数组中的元素包含调用数组的元素和concat-中传入参数的值，传入的参数可以是单独数值，也可以是数组-concat-不会递归扁平化数组的数组。案例如下："><span class="toc-text">Array.concat()方法创建并返回一个新数组，新数组中的元素包含调用数组的元素和concat()中传入参数的值，传入的参数可以是单独数值，也可以是数组,concat()不会递归扁平化数组的数组。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、slice（）方法："><span class="toc-text">5、slice（）方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-slice-方法返回指定数组的一个片段或子数组。里面可以传一个参数或两个参数，参数可以为正也可以为负。案例如下："><span class="toc-text">Array.slice()方法返回指定数组的一个片段或子数组。里面可以传一个参数或两个参数，参数可以为正也可以为负。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、splice（）方法："><span class="toc-text">6、splice（）方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-splice-方法是在数组中插入或删除的通用方法。它会修改调用的数组，splice-可以传入三个参数，第一参数表示删除元素索引开始的地方，第二参数表示删除元素总数，第三参数，表示插入的元素，元素插入的位置就是删除元素开始的位置。案例如下："><span class="toc-text">Array.splice()方法是在数组中插入或删除的通用方法。它会修改调用的数组，splice()可以传入三个参数，第一参数表示删除元素索引开始的地方，第二参数表示删除元素总数，第三参数，表示插入的元素，元素插入的位置就是删除元素开始的位置。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、push（）和-unshift-方法："><span class="toc-text">7、push（）和 unshift()方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-push-方法就是向数组最后面添加元素，它返回的是新数组的长度；Array-unshift-方法就是向数组最前面添加元素，返回的是新数组的长度。案例如下："><span class="toc-text">Array.push()方法就是向数组最后面添加元素，它返回的是新数组的长度；Array.unshift()方法就是向数组最前面添加元素，返回的是新数组的长度。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、pop（）和-shift-方法："><span class="toc-text">8、pop（）和 shift()方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-pop-方法就是删除数组中最后一个元素，它返回是删除的元素；Array-shift-方法是删除数组最前面的元素，返回是删除的元素。"><span class="toc-text">Array.pop()方法就是删除数组中最后一个元素，它返回是删除的元素；Array.shift()方法是删除数组最前面的元素，返回是删除的元素。</span></a></li></ol></li></ol></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2014/06/18/this四种指向/" class="prev">&larr; 上一篇 this四种指向</a>
+  
+
+  
+
+  
+    <a href="/2013/05/20/javascript中事件总结/" class="next">下一篇 javascript中事件总结 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by lishuangyi using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/stiekel/hexo-theme-random">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://coding.net/u/Stiekel">
+        
+          <i class="icon iconfont coding">&#xe607;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://twitter.com/SidCN">
+        
+          <i class="icon iconfont twitter">&#xe600;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/sidcn">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://www.douban.com/people/Stiekel/">
+        
+          <i class="icon iconfont douban">&#xe60f;</i>
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":5000,"shuffle":true,"count":28};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+
