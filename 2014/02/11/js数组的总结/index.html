@@ -131,9 +131,9 @@
   <article id="post">
     <h1>js数组的总结</h1>
     <p class="page-title-sub">
-      <span id = "post-title-date">撰写于 2014-02-11</span>
+      <span id = "post-title-date">Created at 2014-02-11</span>
       
-        <span id = "post-title-updated">修改于 2016-10-23</span>
+        <span id = "post-title-updated">Updated at 2016-10-23</span>
       
       
       
@@ -175,10 +175,10 @@ a.shift();// a=[6,7];  返回值 5
 </code></pre>
   </article>
   <div class="random-toc-area">
-  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
-  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
-    <h2>目录</h2>
+    <h2>Table of Content</h2>
     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript中数组常用方法总结"><span class="toc-text">javascript中数组常用方法总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、join（）方法："><span class="toc-text">1、join（）方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-join-方法将数组中所以元素都转化为字符串链接在一起，返回最后生成的字符串。也可以指定可选的字符串在生成的字符串中来分隔数组的各个元素。如果不指定分隔符，默认使用逗号。案例如下："><span class="toc-text">Array.join()方法将数组中所以元素都转化为字符串链接在一起，返回最后生成的字符串。也可以指定可选的字符串在生成的字符串中来分隔数组的各个元素。如果不指定分隔符，默认使用逗号。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、-reverse-方法："><span class="toc-text">2、   reverse()方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-reverse-方法将数组中元素进行倒叙，返回倒叙的数组，它是在原来数组中进行倒叙，不产生的新数组，返回就是原来的数组，只不过里面元素已经进行倒叙重排了。案例如下："><span class="toc-text">Array.reverse()方法将数组中元素进行倒叙，返回倒叙的数组，它是在原来数组中进行倒叙，不产生的新数组，返回就是原来的数组，只不过里面元素已经进行倒叙重排了。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、sort-方法："><span class="toc-text">3、sort()方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-sort-方法将数组中的元素排序，并返回排序好的数组。如果不传参数默认以字母表顺序进行排序。案例如下："><span class="toc-text">Array.sort()方法将数组中的元素排序，并返回排序好的数组。如果不传参数默认以字母表顺序进行排序。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、concat"><span class="toc-text">4、concat():</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-concat-方法创建并返回一个新数组，新数组中的元素包含调用数组的元素和concat-中传入参数的值，传入的参数可以是单独数值，也可以是数组-concat-不会递归扁平化数组的数组。案例如下："><span class="toc-text">Array.concat()方法创建并返回一个新数组，新数组中的元素包含调用数组的元素和concat()中传入参数的值，传入的参数可以是单独数值，也可以是数组,concat()不会递归扁平化数组的数组。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、slice（）方法："><span class="toc-text">5、slice（）方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-slice-方法返回指定数组的一个片段或子数组。里面可以传一个参数或两个参数，参数可以为正也可以为负。案例如下："><span class="toc-text">Array.slice()方法返回指定数组的一个片段或子数组。里面可以传一个参数或两个参数，参数可以为正也可以为负。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、splice（）方法："><span class="toc-text">6、splice（）方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-splice-方法是在数组中插入或删除的通用方法。它会修改调用的数组，splice-可以传入三个参数，第一参数表示删除元素索引开始的地方，第二参数表示删除元素总数，第三参数，表示插入的元素，元素插入的位置就是删除元素开始的位置。案例如下："><span class="toc-text">Array.splice()方法是在数组中插入或删除的通用方法。它会修改调用的数组，splice()可以传入三个参数，第一参数表示删除元素索引开始的地方，第二参数表示删除元素总数，第三参数，表示插入的元素，元素插入的位置就是删除元素开始的位置。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、push（）和-unshift-方法："><span class="toc-text">7、push（）和 unshift()方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-push-方法就是向数组最后面添加元素，它返回的是新数组的长度；Array-unshift-方法就是向数组最前面添加元素，返回的是新数组的长度。案例如下："><span class="toc-text">Array.push()方法就是向数组最后面添加元素，它返回的是新数组的长度；Array.unshift()方法就是向数组最前面添加元素，返回的是新数组的长度。案例如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、pop（）和-shift-方法："><span class="toc-text">8、pop（）和 shift()方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-pop-方法就是删除数组中最后一个元素，它返回是删除的元素；Array-shift-方法是删除数组最前面的元素，返回是删除的元素。"><span class="toc-text">Array.pop()方法就是删除数组中最后一个元素，它返回是删除的元素；Array.shift()方法是删除数组最前面的元素，返回是删除的元素。</span></a></li></ol></li></ol></li></ol>
   </div>
 </div>
@@ -186,13 +186,13 @@ a.shift();// a=[6,7];  返回值 5
   
 <nav id="pagination">
   
-    <a href="/2014/06/18/this四种指向/" class="prev">&larr; 上一篇 this四种指向</a>
+    <a href="/2014/06/18/this四种指向/" class="prev">&larr; Prev post this四种指向</a>
   
 
   
 
   
-    <a href="/2013/05/20/javascript中事件总结/" class="next">下一篇 javascript中事件总结 &rarr;</a>
+    <a href="/2013/05/20/javascript中事件总结/" class="next">Next post javascript中事件总结 &rarr;</a>
   
 </nav>
 
