@@ -120,9 +120,9 @@
   <article id="post">
     <h1>javascript中事件总结</h1>
     <p class="page-title-sub">
-      <span id = "post-title-date">撰写于 2013-05-20</span>
+      <span id = "post-title-date">Created at 2013-05-20</span>
       
-        <span id = "post-title-updated">修改于 2016-10-23</span>
+        <span id = "post-title-updated">Updated at 2016-10-23</span>
       
       
       
@@ -158,10 +158,10 @@
 </code></pre>
   </article>
   <div class="random-toc-area">
-  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
-  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
-    <h2>目录</h2>
+    <h2>Table of Content</h2>
     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript一个重要知识点：事件。"><span class="toc-text">javascript一个重要知识点：事件。</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、事件的概念："><span class="toc-text">1、事件的概念：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript是事件驱动的，那什么是事件-事件就是在javascript中被侦测到DOM元素行为，就称之为javascript事件。"><span class="toc-text">javascript是事件驱动的，那什么是事件?事件就是在javascript中被侦测到DOM元素行为，就称之为javascript事件。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、事件的三个阶段"><span class="toc-text">2、事件的三个阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事件的三个阶段分别为："><span class="toc-text">事件的三个阶段分别为：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1、捕获阶段-2、目标阶段3、冒泡阶段。"><span class="toc-text">1、捕获阶段  2、目标阶段3、冒泡阶段。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#捕获的概念：就会为了找到目标DOM元素，会从上往下一级一级查找，直到找到目标DOM元素。（window-gt-document-gt-html-gt-body-gt-……-gt-目标DOM元素。"><span class="toc-text">捕获的概念：就会为了找到目标DOM元素，会从上往下一级一级查找，直到找到目标DOM元素。（window->document->html->body->……->目标DOM元素。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#冒泡的概念：目标事件执行后，会从下往上一级一级查找是否有相同事件类型，直到window。"><span class="toc-text">冒泡的概念：目标事件执行后，会从下往上一级一级查找是否有相同事件类型，直到window。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、事件的绑定方式"><span class="toc-text">3、事件的绑定方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、最简单绑定方式：btn-onclick-function"><span class="toc-text">1、最简单绑定方式：btn.onclick=function(){};</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、W3C标准绑定方式：addEventListener-事件名称，事件处理程序，useCapture-第三个参数是布尔值，如果是true表示捕获，如果是false就是冒泡，默认为冒泡。"><span class="toc-text">2、W3C标准绑定方式：addEventListener(事件名称，事件处理程序，useCapture)第三个参数是布尔值，如果是true表示捕获，如果是false就是冒泡，默认为冒泡。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、IE中：attachEvent-“on”-事件名称-事件处理程序-这个方法不支持：捕获阶段。"><span class="toc-text">3、IE中：attachEvent(“on” + 事件名称, 事件处理程序)这个方法不支持：捕获阶段。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、三种绑定事件this的指向问题。"><span class="toc-text">4、三种绑定事件this的指向问题。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、-onclick-事件中的this-就是-当前对象"><span class="toc-text">1、 onclick 事件中的this 就是 当前对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、addEventListener-事件处理程序中的this：当前对象"><span class="toc-text">2、addEventListener 事件处理程序中的this：当前对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、attachEvent-事件处理程序中的this-：-window"><span class="toc-text">3、attachEvent 事件处理程序中的this ：    window</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、事件兼容的封装"><span class="toc-text">5、事件兼容的封装</span></a></li></ol></li></ol>
   </div>
 </div>
@@ -169,7 +169,7 @@
   
 <nav id="pagination">
   
-    <a href="/2014/02/11/js数组的总结/" class="prev">&larr; 上一篇 js数组的总结</a>
+    <a href="/2014/02/11/js数组的总结/" class="prev">&larr; Prev post js数组的总结</a>
   
 
   
