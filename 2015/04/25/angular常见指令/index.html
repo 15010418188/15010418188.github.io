@@ -16,12 +16,14 @@
   
   
   
-    <meta name="description" content="谈谈我对闭包知识的深刻理解在javascript中闭包应该是最难理解的一部分内容。在我看来闭包就是和作用域之间的联系。1、首先我们来了解一下javascript中的作用域知识。javascript中的作用域其实就指的函数作用域，因为只有函数在javascript中才能形成区域范围。而函数作用域有一下特点。
-1.1  函数能访问到外部的变量。案例一：
-var num = 123;
-  func...">
+    <meta name="description" content="5 AngularJs的指令所谓的指令，就是AngularJs“给某个标签打标记”的方式。不打标记，AngularJs就不知道如何去同步界面和数据，应该把数据同步到界面的什么地方上去。接下来，我们来学习一些用AngularJs在界面上打标记的方式。
+0. 作用域类：1. ng-app
+1. 内容类：1. ng-bind
+2. 插值语法({{}})
+3. ng-model
+2. 事件类：1. ...">
   
-  <title>js闭包 [ 前端之路 ]</title>
+  <title>angular常见指令 [ 前端之路 ]</title>
   
   
     <link rel="shortcut icon" href="/favicon.ico">
@@ -40,22 +42,13 @@ var num = 123;
 <body>
 <div class="side-navigate hide-area">
   
-    <div class="item prev">
-      <a href="/2015/04/25/angular常见指令/">
-        <div class="item-icon"></div>
-      </a>
-      <div class="item-title">
-        angular常见指令
-      </div>
-    </div>
-  
   
     <div class="item next">
-      <a href="/2014/10/23/js缓存讲解/">
+      <a href="/2015/02/14/js闭包/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        js缓存讲解
+        js闭包
       </div>
     </div>
   
@@ -130,52 +123,30 @@ var num = 123;
       
       
   <article id="post">
-    <h1>js闭包</h1>
+    <h1>angular常见指令</h1>
     <p class="page-title-sub">
-      <span id = "post-title-date">Created at 2015-02-14</span>
+      <span id = "post-title-date">Created at 2015-04-25</span>
       
-        <span id = "post-title-updated">Updated at 2016-10-23</span>
+        <span id = "post-title-updated">Updated at 2016-10-25</span>
       
       
       
     </p>
     
-    <h1 id="谈谈我对闭包知识的深刻理解"><a href="#谈谈我对闭包知识的深刻理解" class="headerlink" title="谈谈我对闭包知识的深刻理解"></a>谈谈我对闭包知识的深刻理解</h1><h2 id="在javascript中闭包应该是最难理解的一部分内容。在我看来闭包就是和作用域之间的联系。"><a href="#在javascript中闭包应该是最难理解的一部分内容。在我看来闭包就是和作用域之间的联系。" class="headerlink" title="在javascript中闭包应该是最难理解的一部分内容。在我看来闭包就是和作用域之间的联系。"></a>在javascript中闭包应该是最难理解的一部分内容。在我看来闭包就是和作用域之间的联系。</h2><h3 id="1、首先我们来了解一下javascript中的作用域知识。"><a href="#1、首先我们来了解一下javascript中的作用域知识。" class="headerlink" title="1、首先我们来了解一下javascript中的作用域知识。"></a>1、首先我们来了解一下javascript中的作用域知识。</h3><p>javascript中的作用域其实就指的函数作用域，因为只有函数在javascript中才能形成区域范围。而函数作用域有一下特点。</p>
-<p>1.1  函数能访问到外部的变量。案例一：</p>
-<pre><code>var num = 123;
-  function fn() {
-     console.log(num);//输出的值为123
-  }
-  fn();
-</code></pre><p>1.2 函数内的变量不能被外部访问到。案例二：</p>
-<pre><code> function fn(){
- var num=123;
-}
- console.log(num)//输出值：num is not undefined说明函数内部的变量是不能被外边访问的。
-</code></pre><h3 id="2、下面就该说闭包了"><a href="#2、下面就该说闭包了" class="headerlink" title="2、下面就该说闭包了"></a>2、下面就该说闭包了</h3><p>   从上面案例二我可以知道函数会形成一个封闭的区域，对其中的变量起到保护作用，使函数外边无法访问。</p>
-<p>   闭包：从字面意思来理解就是封闭和包裹，换句话说，就是在函数内部定义的变量，在函数的外部无法访问到，因此就说函数构成了一个闭包。</p>
-<p>   说白了闭包是作用域的应用。</p>
-<p>   计算机科学中对闭包的定义为：一个函数的函数体以及函数所处的环境，构成的一个综合体叫做：闭包</p>
-<p>   函数体：就是函数内部的代码。</p>
-<p>   函数所处的环境：指的就是作用域。</p>
-<p>   是不是觉得计算机科学中对闭包的定义是不是很难理解。</p>
-<h3 id="3、使用闭包来解决什么样的问题？"><a href="#3、使用闭包来解决什么样的问题？" class="headerlink" title="3、使用闭包来解决什么样的问题？"></a>3、使用闭包来解决什么样的问题？</h3><p>我使用闭包来解决如何访问函数内部变量的问题。<br>下面我写个史上最简单的闭包。</p>
-<pre><code>function foo() {
-      var num = 123;
-
-      function fn() {
-          return num;//
-      }
-      return fn;
-  }
-  var m=foo();
-  var f=m();
-  console.log(f);//输出的值为123，这样就可以访问到函数内部变量num。
-  原理就是利用闭包：在函数foo中嵌套了一个函数fn,利用函数fn可以访问到其外部的变量，
-  而获取函数foo中的变量num,当外部调用函数foo()时候，函数foo中 return返回fn函数的实体，
-  然后我再对函数fn进行调用就在外部访问到函数内部变量num了。就是利用内部函数的闭包特性把
-  函数foo中的变量取到外边，说白了内部函数就相当于一个媒介，就是一个桥梁连接函数内部和外部。
-  这就是闭包作用。
+    <h1 id="5-AngularJs的指令"><a href="#5-AngularJs的指令" class="headerlink" title="5 AngularJs的指令"></a>5 AngularJs的指令</h1><p>所谓的指令，就是AngularJs“给某个标签打标记”的方式。不打标记，<br>AngularJs就不知道如何去同步界面和数据，应该把数据同步到界面的什么地方上去。<br>接下来，我们来学习一些用AngularJs在界面上打标记的方式。</p>
+<h2 id="0-作用域类："><a href="#0-作用域类：" class="headerlink" title="0. 作用域类："></a>0. 作用域类：</h2><pre><code>1. ng-app
+</code></pre><h2 id="1-内容类："><a href="#1-内容类：" class="headerlink" title="1. 内容类："></a>1. 内容类：</h2><pre><code>1. ng-bind
+2. 插值语法({{}})
+3. ng-model
+</code></pre><h2 id="2-事件类："><a href="#2-事件类：" class="headerlink" title="2. 事件类："></a>2. 事件类：</h2><pre><code>1. ng-click、ng-dblclick
+2. ng-blur、ng-focus等
+3. 其他
+</code></pre><h2 id="3-样式类："><a href="#3-样式类：" class="headerlink" title="3. 样式类："></a>3. 样式类：</h2><pre><code>1. ng-class
+2. ng-style
+3. ng-hide与ng-show
+</code></pre><h2 id="4-仿流程控制类："><a href="#4-仿流程控制类：" class="headerlink" title="4. 仿流程控制类："></a>4. 仿流程控制类：</h2><pre><code>1. ng-if
+2. ng-switch
+3. ng-repeat
 </code></pre>
   </article>
   <div class="random-toc-area">
@@ -183,20 +154,18 @@ var num = 123;
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#谈谈我对闭包知识的深刻理解"><span class="toc-text">谈谈我对闭包知识的深刻理解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在javascript中闭包应该是最难理解的一部分内容。在我看来闭包就是和作用域之间的联系。"><span class="toc-text">在javascript中闭包应该是最难理解的一部分内容。在我看来闭包就是和作用域之间的联系。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、首先我们来了解一下javascript中的作用域知识。"><span class="toc-text">1、首先我们来了解一下javascript中的作用域知识。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、下面就该说闭包了"><span class="toc-text">2、下面就该说闭包了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、使用闭包来解决什么样的问题？"><span class="toc-text">3、使用闭包来解决什么样的问题？</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#5-AngularJs的指令"><span class="toc-text">5 AngularJs的指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-作用域类："><span class="toc-text">0. 作用域类：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-内容类："><span class="toc-text">1. 内容类：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-事件类："><span class="toc-text">2. 事件类：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-样式类："><span class="toc-text">3. 样式类：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-仿流程控制类："><span class="toc-text">4. 仿流程控制类：</span></a></li></ol></li></ol>
   </div>
 </div>
 
   
 <nav id="pagination">
   
-    <a href="/2015/04/25/angular常见指令/" class="prev">&larr; Prev post angular常见指令</a>
-  
 
   
 
   
-    <a href="/2014/10/23/js缓存讲解/" class="next">Next post js缓存讲解 &rarr;</a>
+    <a href="/2015/02/14/js闭包/" class="next">Next post js闭包 &rarr;</a>
   
 </nav>
 
